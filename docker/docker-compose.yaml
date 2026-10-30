@@ -1,0 +1,24 @@
+name: human_terrain_generation
+
+services:
+  human_terrain_generation:
+    build:
+      context: ../
+      dockerfile: docker/Dockerfile
+    volumes:
+      - ../data:/root/human_terrain_generation/data
+      - ../src:/root/human_terrain_generation/src
+      - ../external:/root/human_terrain_generation/external
+      - ../scripts:/root/human_terrain_generation/scripts
+      - ../wandb:/root/human_terrain_generation/wandb
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+    network_mode: host
+    working_dir: /root/human_terrain_generation
+    privileged: true
+    stdin_open: true
+    tty: true
+    image: hgt-base
+    command: /bin/bash 
+    env_file:
+      - .env.hgt
+    runtime: nvidia

@@ -1,0 +1,83 @@
+generator_config:
+  exomc2device_offset:
+  - -0.04
+  - 0.0
+  - 0.0
+  eyes2device:
+    dist2glass: 0.01
+    height_trans: 0.02
+    joint: Eyes
+  fps: 30
+  head2device:
+    dist2glass: 0.11
+    height_trans: 0.05
+    joint: Head
+    rot_euler_global:
+    - -90
+    - 180
+    - 0
+smplx_config:
+  gender: male
+  betas:
+  - -0.06326289474964142
+  - -0.5875453948974609
+  - -0.2539297938346863
+  - -0.10258295387029648
+  - 0.0897120013833046
+  - 0.08824656903743744
+  - 0.11681587249040604
+  - -0.006452432833611965
+  - 0.04194186255335808
+  - 0.03760572522878647
+optimizer_config:
+  ik_config:
+    batch_size: 30
+    learning_rate: 0.001
+    max_iterations: 50
+    opt_vars:
+      body_pose:
+      - collar
+      - arms
+      - hips
+      - knees
+      - ankles
+      eye_pose: false
+      global_orient: false
+      jaw_pose: false
+    optimizer: adam
+    weights:
+      contact: 0.0
+      eye_pos: 0.0
+      head_pos: 0.0
+      penetration: 0.0
+      pose_prior: 10.0
+      smooth: 0.0
+  contact_config:
+    batch_size: 30
+    learning_rate: 0.001
+    max_iterations: 150
+    opt_vars:
+      body_pose:
+      - hips
+      - knees
+      - feet
+      eye_pose: false
+      global_orient: false
+      jaw_pose: false
+    optimizer: adam
+    weights:
+      contact: 10.0
+      eye_pos: 0.0
+      head_pos: 0.0
+      penetration: 10.0
+      pose_prior: 0.0
+      smooth: 0.0
+retargeter_config:
+  robot_type: g1
+  robot_assets: g1_29dof_spherehand
+evaluator_config: null
+visualizer_config:
+  grcp_port: 9000
+  web_port: 9090
+  fps: 30
+

@@ -1,0 +1,1 @@
+git+https://github.com/facebookresearch/vggt.git@e56963328b7476e615ce8dda9164d381f8dc07a3#egg=vggt

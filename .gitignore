@@ -1,0 +1,48 @@
+# macOS system files
+.DS_Store
+
+# vscode
+.vscode/
+
+#wandb
+wandb/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+venv/
+.env/
+
+# Logs
+logs/
+*.log
+
+# Data
+data/*
+!data/models/
+!data/sequences/
+!data/scenes/
+
+data/models/*
+!data/models/robot_models/
+!data/models/smplx_models/
+data/models/smplx_models/*
+!data/blueprints/
+!data/assets/
+
+data/sequences/*
+!data/sequences/00_example_seq/
+
+# Temporary or large output files
+*.tmp
+*.bak
+*.npy
+*.npz
+*.pkl
+*.pt
+*.h5
+*.vrs
+*.deb
+*.zip

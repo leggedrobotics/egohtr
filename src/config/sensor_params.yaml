@@ -1,0 +1,78 @@
+# Aria Glasses Sensor Configuration
+aria:
+  fps: 30
+  streams:
+    rgb: "214-1"
+    audio: "231-1"
+  calibration:
+    model: "pinhole"
+    rotation_k: -1  # k=-1 is 90 degrees CW
+  processing:
+    voxel_size: 0.015
+    num_init_images: 5
+    downsampling_factor: 4
+    crop_px: 40
+  time_sync:
+    freq_audio: 48000  # Hz
+    clap_period: 35    # seconds
+    peak_height: 1.0e+8   # amplitude
+    peak_distance: 48000  # samples
+  time_sync_obs:
+    freq_audio: 48000  # Hz
+    clap_period: 200    # seconds
+    peak_height: 1.0e+8   # amplitude
+    peak_distance: 48000  # samples
+
+# Rokoko Suit Sensor Configuration
+egomc: 
+  format: "roko"
+  fps: 30
+  time_scale: 1.0e-3
+  distance_scale: 0.01  # roko units to meters
+  footlock:
+    threshold_hard: 0.2    # m/s (Binary lock)
+    threshold_soft: 0.05   # m/s (Gaussian/Soft lock)
+  time_sync:
+    freq_raw_data: 100         # Hz
+    clap_period: 8            # seconds
+    peak_height: 15            # m/s^2
+    peak_max_threshold: 1000   # m/s^2
+    peak_distance: 200         # samples
+    clear_startup: 30          # frames
+    first_peak: false          # use first detected peak for sync
+
+#Qualisys Sensor Configuration
+exomc:
+  marker_align: Aria
+  marker_init: 
+   - HeadTop
+   - HeadFront
+  marker_clap: Clap
+  fps: 300
+  unit_scale: 0.001  # mm to meters
+  time_sync:
+    freq_raw_data: 300         # Hz
+    clap_period: 30            # seconds
+    peak_height: 0.006          # m/s^2
+    peak_max_threshold: 1.     # m/s^2
+    peak_distance: 300         # samples
+    clear_startup: 20         # frames
+    first_peak: True          # use first detected peak for sync
+    time_offset: 0.07          # seconds
+  scalar_first: False          # whether quaternions are in (w, x, y, z) format
+  offset:
+    translation: [0.0, 0.0, 0.0] # side, height, front in smplx pose frame (meters)
+
+# BLK2GO Sensor Configuration
+scanner:
+  voxel_size: 0.015
+  plane_fit:
+    z_min : -1.5
+    z_max : -0.5
+    max_attempts: 5
+    distance_threshold: 0.02
+    ransac_n: 3
+    num_iterations: 1000
+    normal_threshold: 0.95
+  k_nn: 
+    points: 1
